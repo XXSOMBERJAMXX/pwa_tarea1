@@ -75,11 +75,22 @@ export default function NewEntryForm({ onEntryAdded }: NewEntryFormProps) {
       });
 
       // ✅ Notificación al crear
-      if ("Notification" in window && Notification.permission === "granted") {
-        new Notification("📢 Blog creado", {
-          body: `Tu blog "${title}" fue guardado con éxito.`,
-          icon: "/icons/icon-192x192.png" // Usa tu icono de PWA
-        });
+      if ("Notification" in window) {
+        if (Notification.permission === "granted") {
+          new Notification("📢 Blog creado", {
+            body: `Tu blog "${title}" fue guardado con éxito.`,
+            icon: "/icons/icon-192x192.png"
+          });
+        } else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+              new Notification("📢 Blog creado", {
+                body: `Tu blog "${title}" fue guardado con éxito.`,
+                icon: "/icons/icon-192x192.png"
+              });
+            }
+          });
+        }
       }
 
       setTitle('');
