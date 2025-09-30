@@ -1,7 +1,7 @@
 {
-  "name": "Mi Diario Personal",
-  "short_name": "Diario",
-  "description": "Diario personal con fotos y frases inspiradoras",
+  "name": "Blog Gamer",
+  "short_name": "BlogG",
+  "description": "Blog para gamers y entusiastas de la tecnología.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
